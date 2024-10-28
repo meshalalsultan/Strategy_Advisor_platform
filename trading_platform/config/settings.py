@@ -5,6 +5,10 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+# OpenAI settings
+OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
+
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'your-secret-key-here')
@@ -157,5 +161,3 @@ ACCOUNT_SESSION_REMEMBER = True
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
 
-# OpenAI settings
-OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')

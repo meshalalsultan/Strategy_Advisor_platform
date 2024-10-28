@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <title>استراتيجيات {{ user.username }}</title>
+</head>
+<body>
+    <h1>الاستراتيجيات الخاصة ب{{ user.username }}</h1>
+
+    {% for strategy in strategies %}
+        <div class="strategy">
+            <h2>{{ strategy.title }}</h2>
+            <p><strong>مستوى الخبرة:</strong> {{ strategy.get_experience_level_display }}</p>
+            <p><strong>أسلوب التداول:</strong> {{ strategy.get_trading_style_display }}</p>
+            <p><strong>إدارة المخاطر:</strong> {{ strategy.risk_management }}%</p>
+            <p><strong>الأصول المفضلة:</strong> {{ strategy.preferred_assets }}</p>
+            <p><strong>الأهداف المالية:</strong> {{ strategy.financial_goals }}</p>
+            <p><strong>ساعات التداول:</strong> {{ strategy.trading_hours }}</p>
+            <p><strong>تحليل السوق المفضل:</strong> {{ strategy.get_market_analysis_display }}</p>
+            <p><strong>محتوى الاستراتيجية:</strong> {{ strategy.content }}</p>
+            <p><strong>تاريخ الإنشاء:</strong> {{ strategy.created_at }}</p>
+        </div>
+        <hr>
+    {% empty %}
+        <p>لا توجد استراتيجيات متاحة.</p>
+    {% endfor %}
+</body>
+</html>

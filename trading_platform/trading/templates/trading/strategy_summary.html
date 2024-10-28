@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <title>ملخص الاستراتيجية</title>
+</head>
+<body>
+    <h1>ملخص الاستراتيجية</h1>
+    <ul>
+        <li><strong>عنوان الاستراتيجية:</strong> {{ strategy_data.title }}</li>
+        <li><strong>مستوى الخبرة:</strong> {{ strategy_data.experience_level }}</li>
+        <li><strong>أسلوب التداول:</strong> {{ strategy_data.trading_style }}</li>
+        <li><strong>إدارة المخاطر:</strong> {{ strategy_data.risk_management }}%</li>
+        <li><strong>الأصول المفضلة:</strong> {{ strategy_data.preferred_assets }}</li>
+        <li><strong>الأهداف المالية:</strong> {{ strategy_data.financial_goals }}</li>
+        <li><strong>ساعات التداول:</strong> {{ strategy_data.trading_hours }}</li>
+        <li><strong>تحليل السوق المفضل:</strong> {{ strategy_data.market_analysis }}</li>
+        <li><strong>محتوى الاستراتيجية:</strong> {{ strategy_data.content }}</li>
+    </ul>
+    <form method="post" action="{% url 'trading:strategy_summary' %}">
+        {% csrf_token %}
+        <button type="submit" name="confirm" value="yes">تأكيد</button>
+        <button type="submit" name="confirm" value="no">تعديل</button>
+    </form>
+</body>
+</html>
