@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}تأكيد حذف الاستراتيجية{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <h3>هل أنت متأكد من أنك تريد حذف هذه الاستراتيجية؟</h3>
+        </div>
+        <div class="card-body">
+            <p>عنوان الاستراتيجية: <strong>{{ strategy.title }}</strong></p>
+            <p>سيتم حذف هذه الاستراتيجية بشكل دائم ولن تتمكن من استعادتها.</p>
+            <form method="post">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger">تأكيد الحذف</button>
+                <a href="{% url 'trading:strategy_list' %}" class="btn btn-secondary">إلغاء</a>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

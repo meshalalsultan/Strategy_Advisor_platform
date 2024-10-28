@@ -1,0 +1,31 @@
+<!-- templates/users/pre_registration.html -->
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}معلومات التداول | {{ block.super }}{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-sm">
+                <div class="card-header bg-transparent py-3">
+                    <h1 class="h3 mb-0 text-center">معلومات التداول</h1>
+                </div>
+                <div class="card-body">
+                    <form method="post" novalidate>
+                        {% csrf_token %}
+                        {{ form|crispy }}
+                        <div class="text-center mt-4">
+                            <button type="submit" class="btn btn-primary btn-lg">
+                                متابعة للتسجيل
+                                <i class="fas fa-arrow-left me-2"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

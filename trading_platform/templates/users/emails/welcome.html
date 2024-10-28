@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>مرحباً بك في منصة التداول الذكية</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .header {
+            background: #007bff;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            border-radius: 5px 5px 0 0;
+        }
+        .content {
+            padding: 20px;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>مرحباً بك في منصة التداول الذكية</h1>
+        </div>
+        <div class="content">
+            <h2>مرحباً {{ user.profile.name }}،</h2>
+            
+            <p>نحن سعداء بانضمامك إلى منصة التداول الذكية! نحن هنا لمساعدتك في رحلتك نحو النجاح في التداول.</p>
+            
+            <h3>الخطوات التالية:</h3>
+            <ol>
+                <li>أكمل ملفك الشخصي</li>
+                <li>استكشف استراتيجيات التداول المخصصة</li>
+                <li>تعرف على نظام المكافآت</li>
+                <li>اقرأ أحدث المقالات في مدونتنا</li>
+            </ol>
+
+            <p>يمكنك الوصول إلى حسابك من خلال الرابط أدناه:</p>
+            
+            <a href="{{ url }}" class="button">الذهاب إلى حسابي</a>
+
+            <p>إذا كان لديك أي أسئلة أو استفسارات، لا تتردد في التواصل معنا.</p>
+
+            <p>مع أطيب التحيات،<br>فريق منصة التداول الذكية</p>
+        </div>
+        <div class="footer">
+            <p>© {% now "Y" %} منصة التداول الذكية. جميع الحقوق محفوظة.</p>
+        </div>
+    </div>
+</body>
+</html>

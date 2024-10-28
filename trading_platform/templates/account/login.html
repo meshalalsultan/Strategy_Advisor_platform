@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}تسجيل الدخول | {{ block.super }}{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-sm">
+                <div class="card-header bg-transparent py-3">
+                    <h1 class="h3 mb-0 text-center">تسجيل الدخول</h1>
+                </div>
+                <div class="card-body">
+                    <form method="post" novalidate>
+                        {% csrf_token %}
+                        {{ form|crispy }}
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-primary btn-lg">
+                                <i class="fas fa-sign-in-alt"></i>
+                                تسجيل الدخول
+                            </button>
+                        </div>
+                    </form>
+
+                    <div class="text-center mt-4">
+                        <p class="text-muted">
+                            ليس لديك حساب؟
+                            <a href="{% url 'users:pre_registration' %}">إنشاء حساب جديد</a>
+                        </p>
+                        <p class="text-muted">
+                            <a href="{% url 'account_reset_password' %}">نسيت كلمة المرور؟</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

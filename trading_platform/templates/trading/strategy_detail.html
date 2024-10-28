@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ strategy.title }} | {{ block.super }}{% endblock %}
+
+{% block content %}
+<div class="container">
+    <nav aria-label="breadcrumb" class="mb-4">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'trading:strategy_list' %}">الاستراتيجيات</a></li>
+            <li class="breadcrumb-item active">{{ strategy.title }}</li>
+        </ol>
+    </nav>
+
+    <div class="card">
+        <div class="card-header bg-transparent">
+            <div class="d-flex justify-content-between align-items-center">
+                <h1 class="h3 mb-0">{{ strategy.title }}</h1>
+                <div class="btn-group">
+                    <form method="post" action="{% url 'trading:toggle_favorite' pk=strategy.pk %}" class="d-inline">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-outline-warning">
+                            {% if strategy.is_favorite %}
+                                <i class="fas fa-star"></i> إزالة من المفضلة
+                            {% else %}
+                                <i class="far fa-star"></i> إضافة للمفضلة
+                            {% endif %}
+                        </button>
+                    </form>
+                    <a href="{% url 'trading:update_strategy' pk=strategy.pk %}" class="btn btn-outline-primary">
+                        <i class="fas fa-edit"></i> تعديل
+                    </a>
+                    <a href="{% url 'trading:delete_strategy' pk=strategy.pk %}" class="btn btn-outline-danger">
+                        <i class="fas fa-trash"></i> حذف
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="mb-4">
+                <small class="text-muted">
+                    <i class="far fa-calendar-alt"></i> تم الإنشاء: {{ strategy.created_at|date:"j F Y" }}
+                    {% if strategy.updated_at != strategy.created_at %}
+                        <br>
+                        <i class="far fa-edit"></i> آخر تحديث: {{ strategy.updated_at|date:"j F Y" }}
+                    {% endif %}
+                </small>
+            </div>
+
+            <div class="strategy-content">
+                {{ strategy.content|safe|linebreaks }}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

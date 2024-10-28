@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}تأكيد البريد الإلكتروني{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-sm">
+                <div class="card-header bg-transparent py-3">
+                    <h3 class="card-title mb-0 text-center">تأكيد البريد الإلكتروني</h3>
+                </div>
+                <div class="card-body text-center">
+                    {% if confirmation %}
+                        <p class="mb-4">
+                            يرجى تأكيد أن <strong>{{ confirmation.email_address.email }}</strong> هو بريدك الإلكتروني.
+                        </p>
+                        
+                        <form method="post" action="{% url 'account_confirm_email' confirmation.key %}">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-primary btn-lg">
+                                <i class="fas fa-check me-2"></i>
+                                تأكيد البريد الإلكتروني
+                            </button>
+                        </form>
+                    {% else %}
+                        <div class="alert alert-warning" role="alert">
+                            <i class="fas fa-exclamation-triangle me-2"></i>
+                            رابط التفعيل غير صالح أو منتهي الصلاحية.
+                        </div>
+                        
+                        <p class="mt-4">
+                            <a href="{% url 'account_email' %}" class="btn btn-primary">
+                                <i class="fas fa-envelope me-2"></i>
+                                إعادة إرسال رابط التفعيل
+                            </a>
+                        </p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

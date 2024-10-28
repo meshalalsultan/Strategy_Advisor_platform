@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}حذف {{ strategy.title }} | {{ block.super }}{% endblock %}
+
+{% block content %}
+<div class="container">
+    <nav aria-label="breadcrumb" class="mb-4">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'trading:strategy_list' %}">الاستراتيجيات</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'trading:strategy_detail' pk=strategy.pk %}">{{ strategy.title }}</a></li>
+            <li class="breadcrumb-item active">حذف</li>
+        </ol>
+    </nav>
+
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header bg-danger text-white">
+                    <h1 class="h3 mb-0">تأكيد الحذف</h1>
+                </div>
+                <div class="card-body text-center">
+                    <p class="mb-4">
+                        هل أنت متأكد من حذف الاستراتيجية "{{ strategy.title }}"؟
+                        <br>
+                        <small class="text-muted">هذا الإجراء لا يمكن التراجع عنه.</small>
+                    </p>
+                    <form method="post">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger">
+                            <i class="fas fa-trash"></i> تأكيد الحذف
+                        </button>
+                        <a href="{% url 'trading:strategy_detail' pk=strategy.pk %}" class="btn btn-secondary">
+                            <i class="fas fa-times"></i> إلغاء
+                        </a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,28 @@
+<!-- templates/users/tags/profile_completion.html -->
+<div class="card mb-3">
+    <div class="card-body">
+        <h5 class="card-title">اكتمال الملف الشخصي</h5>
+        <div class="progress mb-2">
+            <div class="progress-bar" role="progressbar" 
+                 style="width: {{ percentage }}%;" 
+                 aria-valuenow="{{ percentage }}" 
+                 aria-valuemin="0" 
+                 aria-valuemax="100">
+                {{ percentage }}%
+            </div>
+        </div>
+        {% if percentage < 100 %}
+            <p class="text-muted mb-0">
+                أكمل ملفك الشخصي للوصول إلى جميع ميزات المنصة.
+                <a href="{% url 'users:profile' %}" class="text-primary">
+                    تحديث الملف الشخصي
+                </a>
+            </p>
+        {% else %}
+            <p class="text-success mb-0">
+                <i class="fas fa-check-circle"></i>
+                تهانينا! ملفك الشخصي مكتمل.
+            </p>
+        {% endif %}
+    </div>
+</div>

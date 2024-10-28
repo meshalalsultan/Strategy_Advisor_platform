@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}إنشاء حساب | {{ block.super }}{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-sm">
+                <div class="card-header bg-transparent py-3">
+                    <h1 class="h3 mb-0 text-center">إنشاء حساب جديد</h1>
+                </div>
+                <div class="card-body">
+                    <!-- Progress Steps -->
+                    <div class="row mb-4">
+                        <div class="col">
+                            <div class="progress" style="height: 3px;">
+                                <div class="progress-bar bg-primary" role="progressbar" style="width: 100%"></div>
+                            </div>
+                            <div class="d-flex justify-content-between mt-2">
+                                <span class="badge bg-success">1. معلومات التداول</span>
+                                <span class="badge bg-primary">2. إنشاء الحساب</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <form method="post" novalidate>
+                        {% csrf_token %}
+                        {{ form|crispy }}
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-primary btn-lg">
+                                <i class="fas fa-user-plus"></i>
+                                إنشاء الحساب
+                            </button>
+                        </div>
+                    </form>
+
+                    <div class="text-center mt-4">
+                        <p class="text-muted">
+                            لديك حساب بالفعل؟
+                            <a href="{% url 'account_login' %}">تسجيل الدخول</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

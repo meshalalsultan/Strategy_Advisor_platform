@@ -1,0 +1,129 @@
+<!-- templates/home.html -->
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}منصة التداول الذكية{% endblock %}
+
+{% block content %}
+<div class="container">
+    <!-- Hero Section -->
+    <div class="row align-items-center py-5">
+        <div class="col-lg-6">
+            <h1 class="display-4 mb-4">استراتيجيات تداول ذكية</h1>
+            <p class="lead mb-4">
+                احصل على استراتيجيات تداول مخصصة باستخدام الذكاء الاصطناعي، مصممة خصيصاً لتناسب أسلوبك وأهدافك.
+            </p>
+            {% if user.is_authenticated %}
+                <a href="{% url 'trading:generate_strategy' %}" class="btn btn-primary btn-lg me-3">
+                    <i class="fas fa-robot"></i> إنشاء استراتيجية
+                </a>
+                <a href="{% url 'trading:strategy_list' %}" class="btn btn-outline-primary btn-lg">
+                    <i class="fas fa-list"></i> استراتيجياتي
+                </a>
+            {% else %}
+                <a href="{% url 'users:pre_registration' %}" class="btn btn-primary btn-lg me-3">
+                    <i class="fas fa-user-plus"></i> ابدأ الآن مجاناً
+                </a>
+                <a href="{% url 'account_login' %}" class="btn btn-outline-primary btn-lg">
+                    <i class="fas fa-sign-in-alt"></i> تسجيل الدخول
+                </a>
+            {% endif %}
+        </div>
+        <div class="col-lg-6">
+            <img src="{% static 'img/trading-hero.svg' %}" alt="Trading Platform" class="img-fluid">
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <div class="row py-5">
+        <div class="col-12 text-center mb-5">
+            <h2 class="h1">مميزات المنصة</h2>
+            <p class="lead text-muted">كل ما تحتاجه لتحسين تداولاتك في مكان واحد</p>
+        </div>
+        
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 border-0 shadow-sm">
+                <div class="card-body text-center">
+                    <div class="mb-3">
+                        <i class="fas fa-robot fa-3x text-primary"></i>
+                    </div>
+                    <h3>ذكاء اصطناعي</h3>
+                    <p>استراتيجيات مخصصة باستخدام أحدث تقنيات الذكاء الاصطناعي</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 border-0 shadow-sm">
+                <div class="card-body text-center">
+                    <div class="mb-3">
+                        <i class="fas fa-chart-line fa-3x text-primary"></i>
+                    </div>
+                    <h3>تحليل متقدم</h3>
+                    <p>تحليل فني وأساسي شامل يناسب جميع أساليب التداول</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 border-0 shadow-sm">
+                <div class="card-body text-center">
+                    <div class="mb-3">
+                        <i class="fas fa-shield-alt fa-3x text-primary"></i>
+                    </div>
+                    <h3>إدارة المخاطر</h3>
+                    <p>استراتيجيات متكاملة لإدارة المخاطر وحماية رأس المال</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- How It Works Section -->
+    <div class="row py-5">
+        <div class="col-12 text-center mb-5">
+            <h2 class="h1">كيف يعمل النظام؟</h2>
+            <p class="lead text-muted">خطوات بسيطة للحصول على استراتيجية تداول مخصصة</p>
+        </div>
+        
+        <div class="col-md-3 mb-4">
+            <div class="text-center">
+                <div class="bg-primary rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                    <span class="text-white h4 mb-0">1</span>
+                </div>
+                <h4>سجل معلوماتك</h4>
+                <p>أدخل بياناتك وتفضيلاتك في التداول</p>
+            </div>
+        </div>
+        
+        <div class="col-md-3 mb-4">
+            <div class="text-center">
+                <div class="bg-primary rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                    <span class="text-white h4 mb-0">2</span>
+                </div>
+                <h4>حدد أهدافك</h4>
+                <p>اختر أهدافك المالية وأسلوب التداول</p>
+            </div>
+        </div>
+        
+        <div class="col-md-3 mb-4">
+            <div class="text-center">
+                <div class="bg-primary rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                    <span class="text-white h4 mb-0">3</span>
+                </div>
+                <h4>احصل على استراتيجية</h4>
+                <p>استراتيجية مخصصة بناءً على بياناتك</p>
+            </div>
+        </div>
+        
+        <div class="col-md-3 mb-4">
+            <div class="text-center">
+                <div class="bg-primary rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                    <span class="text-white h4 mb-0">4</span>
+                </div>
+                <h4>ابدأ التداول</h4>
+                <p>طبق الاستراتيجية وتابع النتائج</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

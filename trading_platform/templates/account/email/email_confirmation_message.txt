@@ -1,0 +1,15 @@
+<!-- templates/account/email/email_confirmation_message.txt -->
+مرحباً {{ user.email }}!
+
+شكراً لتسجيلك في منصة التداول الذكية.
+
+لتفعيل حسابك، يرجى النقر على الرابط التالي:
+{{ activate_url }}
+
+إذا لم تقم بإنشاء هذا الحساب، يمكنك تجاهل هذه الرسالة.
+
+مع تحياتنا،
+فريق منصة التداول الذكية
+
+<!-- templates/account/email/email_confirmation_subject.txt -->
+تأكيد البريد الإلكتروني

@@ -1,0 +1,64 @@
+<!-- templates/trading/strategy_list.html -->
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="h3 mb-0">استراتيجياتي</h1>
+        <a href="{% url 'trading:generate_strategy' %}" class="btn btn-primary">
+            <i class="fas fa-plus me-2"></i>
+            استراتيجية جديدة
+        </a>
+    </div>
+
+    {% if strategies %}
+        <div class="row">
+            {% for strategy in strategies %}
+                <div class="col-md-6 mb-4">
+                    <div class="card shadow-sm h-100">
+                        <div class="card-body">
+                            <h5 class="card-title mb-3">{{ strategy.title }}</h5>
+                            <p class="text-muted">
+                                <small>
+                                    <i class="far fa-calendar-alt me-1"></i>
+                                    {{ strategy.created_at|date:"j F Y" }}
+                                </small>
+                            </p>
+                            <p class="card-text">{{ strategy.content|truncatewords:50 }}</p>
+                        </div>
+                        <div class="card-footer bg-transparent">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <a href="{% url 'trading:strategy_detail' pk=strategy.pk %}" class="btn btn-sm btn-primary">
+                                    <i class="fas fa-eye me-1"></i>
+                                    عرض التفاصيل
+                                </a>
+                                <form method="post" action="{% url 'trading:toggle_favorite' pk=strategy.pk %}" class="d-inline">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-sm btn-outline-warning">
+                                        {% if strategy.is_favorite %}
+                                            <i class="fas fa-star"></i>
+                                        {% else %}
+                                            <i class="far fa-star"></i>
+                                        {% endif %}
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="text-center py-5">
+            <img src="{% static 'img/empty-strategies.svg' %}" alt="No strategies" class="img-fluid mb-4" style="max-width: 200px;">
+            <h3>لا توجد استراتيجيات بعد</h3>
+            <p class="text-muted mb-4">قم بإنشاء استراتيجية جديدة مخصصة لأسلوب تداولك!</p>
+            <a href="{% url 'trading:generate_strategy' %}" class="btn btn-primary btn-lg">
+                <i class="fas fa-plus me-2"></i>
+                إنشاء استراتيجية جديدة
+            </a>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

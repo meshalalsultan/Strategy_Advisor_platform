@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}لوحة المكافآت{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="mb-4">لوحة المكافآت</h1>
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5>نقاط المكافأة الحالية: {{ current_points }}</h5>
+                    <p>يمكنك استخدام هذه النقاط للحصول على مكافآت وعروض خاصة.</p>
+                </div>
+            </div>
+            
+            <!-- المزيد من المحتوى المتعلق بالمكافآت -->
+        </div>
+    </div>
+</div>
+{% endblock %}

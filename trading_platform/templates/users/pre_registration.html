@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}معلومات التداول | {{ block.super }}{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-sm">
+                <div class="card-header bg-transparent py-3">
+                    <h1 class="h3 mb-0 text-center">معلومات التداول الخاصة بك</h1>
+                </div>
+                <div class="card-body">
+                    <!-- Progress Steps -->
+                    <div class="row mb-4">
+                        <div class="col">
+                            <div class="progress" style="height: 3px;">
+                                <div class="progress-bar bg-primary" role="progressbar" style="width: 50%"></div>
+                            </div>
+                            <div class="d-flex justify-content-between mt-2">
+                                <span class="badge bg-primary">1. معلومات التداول</span>
+                                <span class="badge bg-secondary">2. إنشاء الحساب</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <form method="post" novalidate>
+                        {% csrf_token %}
+                        
+                        <div class="mb-4">
+                            <h5 class="text-primary">المعلومات الأساسية</h5>
+                            <hr>
+                            {{ form.experience_level|as_crispy_field }}
+                            {{ form.trading_style|as_crispy_field }}
+                        </div>
+
+                        <div class="mb-4">
+                            <h5 class="text-primary">تفضيلات التداول</h5>
+                            <hr>
+                            {{ form.favorite_assets|as_crispy_field }}
+                            {{ form.trading_hours|as_crispy_field }}
+                            {{ form.analysis_type|as_crispy_field }}
+                        </div>
+
+                        <div class="mb-4">
+                            <h5 class="text-primary">الأهداف وإدارة المخاطر</h5>
+                            <hr>
+                            {{ form.financial_goals|as_crispy_field }}
+                            {{ form.risk_management|as_crispy_field }}
+                        </div>
+
+                        <div class="mb-4">
+                            <h5 class="text-primary">معلومات إضافية (اختيارية)</h5>
+                            <hr>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    {{ form.age|as_crispy_field }}
+                                    {{ form.telegram|as_crispy_field }}
+                                </div>
+                                <div class="col-md-6">
+                                    {{ form.country|as_crispy_field }}
+                                    {{ form.trading_platform|as_crispy_field }}
+                                </div>
+                            </div>
+                            {{ form.is_agency_member|as_crispy_field }}
+                            {{ form.ai_knowledge|as_crispy_field }}
+                        </div>
+
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary btn-lg">
+                                <i class="fas fa-arrow-left"></i>
+                                متابعة لإنشاء الحساب
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

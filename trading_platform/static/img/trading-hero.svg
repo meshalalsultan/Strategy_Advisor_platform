@@ -1,0 +1,34 @@
+<!-- static/img/trading-hero.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <!-- Background -->
+  <rect width="800" height="600" fill="#f8f9fa"/>
+  
+  <!-- Chart Lines -->
+  <path d="M100,500 L200,300 L300,400 L400,200 L500,350 L600,150 L700,250" 
+        stroke="#007bff" 
+        fill="none" 
+        stroke-width="3"/>
+  
+  <!-- Candlesticks -->
+  <g transform="translate(150,250)">
+    <!-- Candle 1 -->
+    <line x1="0" y1="0" x2="0" y2="40" stroke="#28a745" stroke-width="2"/>
+    <rect x="-5" y="10" width="10" height="20" fill="#28a745"/>
+    
+    <!-- Candle 2 -->
+    <line x1="30" y1="-20" x2="30" y2="30" stroke="#dc3545" stroke-width="2"/>
+    <rect x="25" y="-10" width="10" height="30" fill="#dc3545"/>
+    
+    <!-- Candle 3 -->
+    <line x1="60" y1="-10" x2="60" y2="50" stroke="#28a745" stroke-width="2"/>
+    <rect x="55" y="0" width="10" height="40" fill="#28a745"/>
+  </g>
+  
+  <!-- Robot Icon -->
+  <g transform="translate(600,300)">
+    <rect x="-30" y="-30" width="60" height="60" rx="10" fill="#007bff"/>
+    <circle cx="-10" cy="-10" r="5" fill="white"/>
+    <circle cx="10" cy="-10" r="5" fill="white"/>
+    <path d="M-15,10 Q0,20 15,10" stroke="white" fill="none" stroke-width="3"/>
+  </g>
+</svg>

@@ -1,0 +1,5 @@
+<!-- static/img/default-avatar.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="150" height="150">
+    <circle cx="12" cy="7" r="5" fill="#e9ecef"/>
+    <path d="M2 21v-2a7 7 0 0 1 7-7h6a7 7 0 0 1 7 7v2" fill="#e9ecef"/>
+</svg>

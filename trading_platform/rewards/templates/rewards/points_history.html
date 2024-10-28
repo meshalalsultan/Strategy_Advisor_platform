@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}سجل النقاط{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <h5 class="card-title mb-0">سجل النقاط</h5>
+        </div>
+        <div class="card-body">
+            <div class="alert alert-info">
+                مجموع النقاط الحالي: <strong>{{ total_points }}</strong>
+            </div>
+            <ul class="list-group">
+                {% for point in points_history %}
+                    <li class="list-group-item">
+                        {{ point.date|date:"j F Y" }} - {{ point.description }} : {{ point.amount }} نقطة
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}

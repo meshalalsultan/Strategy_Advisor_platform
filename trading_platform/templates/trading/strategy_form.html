@@ -1,0 +1,46 @@
+<!-- templates/trading/strategy_form.html -->
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}إنشاء استراتيجية جديدة | {{ block.super }}{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-sm">
+                <div class="card-header bg-transparent py-3">
+                    <h1 class="h3 mb-0 text-center">إنشاء استراتيجية جديدة</h1>
+                </div>
+                <div class="card-body">
+                    <!-- معلومات عن الملف الشخصي -->
+                    <div class="alert alert-info mb-4">
+                        <h5 class="alert-heading">
+                            <i class="fas fa-info-circle me-2"></i>
+                            معلومات التداول الخاصة بك
+                        </h5>
+                        <hr>
+                        <ul class="list-unstyled mb-0">
+                            <li><strong>مستوى الخبرة:</strong> {{ user.profile.get_experience_level_display }}</li>
+                            <li><strong>أسلوب التداول:</strong> {{ user.profile.get_trading_style_display }}</li>
+                            <li><strong>نوع التحليل:</strong> {{ user.profile.get_analysis_type_display }}</li>
+                        </ul>
+                    </div>
+
+                    <form method="post" novalidate>
+                        {% csrf_token %}
+                        {{ form|crispy }}
+
+                        <div class="text-center mt-4">
+                            <button type="submit" class="btn btn-primary btn-lg">
+                                <i class="fas fa-robot me-2"></i>
+                                إنشاء الاستراتيجية
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
