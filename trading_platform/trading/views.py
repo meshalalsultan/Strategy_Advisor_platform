@@ -42,6 +42,24 @@ class StrategyDetailView(LoginRequiredMixin, DetailView):
 def strategy_summary_view(request):
     strategy_data = request.session.get('strategy_data')
     if not strategy_data:
+        return redirect('trading:create_strategy')  # في حالة عدم وجود بيانات، إعادة التوجيه
+
+    if request.method == 'POST':
+        if request.POST.get('confirm') == 'yes':
+            form = StrategyForm(strategy_data)
+            if form.is_valid():
+                strategy = form.save(commit=False)
+                strategy.user = request.user
+                strategy.save()
+                messages.success(request, "تم إنشاء الاستراتيجية بنجاح.")
+                return redirect('trading:strategy_list')
+        else:
+            return redirect('trading:create_strategy')
+
+    return render(request, 'trading/strategy_summary.html', {'strategy_data': strategy_data})
+
+    strategy_data = request.session.get('strategy_data')
+    if not strategy_data:
         return redirect('trading:generate_strategy')  # في حالة عدم وجود بيانات، إعادة التوجيه
 
     if request.method == 'POST':
@@ -82,7 +100,20 @@ def confirm_strategy_view(request):
             return redirect('create_strategy')
     return redirect('create_strategy')
 
+
 def create_strategy_view(request):
+    if request.method == 'POST':
+        form = StrategyForm(request.POST)
+        if form.is_valid():
+            # تخزين البيانات في الجلسة لدعم العرض العربي في الملخص
+            request.session['strategy_data'] = form.cleaned_data
+            return redirect('trading:strategy_summary')
+        else:
+            messages.error(request, "حدث خطأ أثناء إنشاء الاستراتيجية. يرجى التأكد من المدخلات.")
+    else:
+        form = StrategyForm()
+
+    return render(request, 'trading/strategy_form.html', {'form': form})
     if request.method == 'POST':
         form = StrategyForm(request.POST)
         if form.is_valid():

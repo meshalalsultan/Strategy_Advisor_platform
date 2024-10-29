@@ -75,10 +75,19 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'your_database_name',  # اسم قاعدة البيانات
+        'USER': 'your_username',       # اسم المستخدم لقاعدة البيانات
+        'PASSWORD': 'your_password',   # كلمة المرور
+        'HOST': 'your_database_host',  # الرابط الخاص بقاعدة البيانات على RDS
+        'PORT': '3306',                # منفذ MySQL الافتراضي
+        'OPTIONS': {
+            'charset': 'utf8mb4',      # لدعم الأحرف العربية بشكل كامل
+        }
     }
 }
+
+
 
 AUTH_PASSWORD_VALIDATORS = [
     {
