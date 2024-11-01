@@ -64,6 +64,12 @@ class Strategy(models.Model):
         choices=[('technical', 'التحليل الفني'), ('fundamental', 'التحليل الأساسي'), ('mixed', 'مزيج بينهما')],
         default='technical'
     )
+    
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    title = models.CharField(max_length=255)
+    content = models.TextField()
+    chatgpt_response = models.TextField(blank=True, null=True)  # حقل لتخزين رد ChatGPT
+    created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         verbose_name = _('استراتيجية')

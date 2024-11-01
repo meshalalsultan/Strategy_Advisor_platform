@@ -1,0 +1,16 @@
+<!-- trading/templates/trading/strategy_confirm_delete.html -->
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <title>تأكيد حذف الاستراتيجية</title>
+</head>
+<body>
+    <h2>هل أنت متأكد أنك تريد حذف هذه الاستراتيجية؟</h2>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">حذف</button>
+        <a href="{% url 'trading:strategy_list' %}">إلغاء</a>
+    </form>
+</body>
+</html>

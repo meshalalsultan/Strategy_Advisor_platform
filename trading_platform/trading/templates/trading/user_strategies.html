@@ -24,5 +24,23 @@
     {% empty %}
         <p>لا توجد استراتيجيات متاحة.</p>
     {% endfor %}
+
+<!-- trading/templates/trading/user_strategies.html -->
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <title>استراتيجيات المستخدم</title>
+</head>
+<body>
+    <h1>استراتيجيات {{ user.username }}</h1>
+    <ul>
+        {% for strategy in strategies %}
+            <li>{{ strategy.title }} - <a href="{% url 'trading:strategy_detail' strategy.id %}">عرض التفاصيل</a></li>
+        {% empty %}
+            <li>لا توجد استراتيجيات للمستخدم.</li>
+        {% endfor %}
+    </ul>
+    
 </body>
 </html>
